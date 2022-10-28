@@ -70,10 +70,23 @@ public class MainStream {
 	        .ifPresent(System.out::println);
 
 	    // Min
+    	System.out.println("-------------------Stream MIN----------------------");
 	    laptop.stream()
 	        .min(Comparator.comparing(Laptop::getPrice))
 	        .ifPresent(System.out::println);
+	    
+	    // Group
+    	System.out.println("-------------------Stream groupby using map --------------------");
+	    Map<OperatingSys, List<Laptop>> groupByGender = laptop.stream()
+	        .collect(Collectors.groupingBy(Laptop::getOs));
 
+	    groupByGender.forEach((os, lap) -> {
+	      System.out.println(os);
+	      lap.forEach(System.out::println);
+	      System.out.println();
+	    });
+
+	    
 	    }
 		
 	
