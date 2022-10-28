@@ -1,6 +1,7 @@
 package com.yamani.streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -87,15 +88,49 @@ public class MainStream {
 	    });
 	    
 	    //free style
-    	System.out.println("-------------------Stream Free Style --------------------");
-	    Optional<String> ExpensiveMacLaptop = laptop.stream()
+    	System.out.println("-------------------------Stream Free Style --------------------------");
+	    
+    	//ExpensiveMacLaptop
+        System.out.println("-----expensive mac laptop-----");
+
+    	Optional<String> ExpensiveMacLaptop = laptop.stream()
 	            .filter(Laptop -> Laptop.getOs().equals(OperatingSys.MAC))
 	            .max(Comparator.comparing(Laptop::getPrice))
 	            .map(Laptop::getName);
-
 	    ExpensiveMacLaptop.ifPresent(System.out::println);
+    	
+	    //count laptop price more than 5000
+        System.out.println("-----count lap more than 5000-----");
 
-	    
+	    int count = (int) laptop.stream()
+                .filter(lap->lap.getPrice()>=5000)
+                .count();
+        System.out.println(count);
+        
+        // list all
+        System.out.println("-----listall-----");
+
+        laptop.stream().forEach(System.out::println);
+        
+        //
+        System.out.println("-----limit-----");
+        laptop.stream()
+        .limit(2)
+        .forEach(System.out::println);
+
+        //
+        System.out.println("-----skip-----");
+		laptop.stream()
+		        .skip(2)
+		        .forEach(System.out::println);
+		
+		//
+        System.out.println("-----takeWhile-----");
+        //list all ,stop whene you find a condition 
+		laptop.stream()
+		        .takeWhile(m->m.getPrice()!=2000)
+		        .forEach(System.out::println);
+
 	    }
 		
 	
