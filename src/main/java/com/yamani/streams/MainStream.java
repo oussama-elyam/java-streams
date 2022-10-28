@@ -85,6 +85,15 @@ public class MainStream {
 	      lap.forEach(System.out::println);
 	      System.out.println();
 	    });
+	    
+	    //free style
+    	System.out.println("-------------------Stream Free Style --------------------");
+	    Optional<String> ExpensiveMacLaptop = laptop.stream()
+	            .filter(Laptop -> Laptop.getOs().equals(OperatingSys.MAC))
+	            .max(Comparator.comparing(Laptop::getPrice))
+	            .map(Laptop::getName);
+
+	    ExpensiveMacLaptop.ifPresent(System.out::println);
 
 	    
 	    }
