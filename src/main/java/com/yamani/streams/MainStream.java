@@ -41,7 +41,27 @@ public class MainStream {
 	        .collect(Collectors.toList());
 
 	    sorted.forEach(System.out::println);
-
+	    
+	    // All match
+    	System.out.println("-------------------Stream all match----------------------");
+	    boolean allMatch = laptop.stream()
+	        .allMatch(Laptop -> Laptop.getPrice() > 5000);
+	
+	    System.out.println(allMatch);
+	    
+	    // Any match
+    	System.out.println("-------------------Stream any match----------------------");
+	    boolean anyMatch = laptop.stream()
+	        .anyMatch(Laptop -> Laptop.getPrice() > 5000);
+	
+	    System.out.println(anyMatch);
+	    
+	    // None match
+    	System.out.println("-------------------Stream none match----------------------");
+	    boolean noneMatch = laptop.stream()
+	        .noneMatch(Laptop -> Laptop.getName().equals("laptopA"));
+	    
+	    System.out.println(noneMatch);
 	    }
 	
 	 private static List<Laptop> getLaptop() {
