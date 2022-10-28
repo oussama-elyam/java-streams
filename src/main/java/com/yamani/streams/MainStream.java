@@ -62,7 +62,20 @@ public class MainStream {
 	        .noneMatch(Laptop -> Laptop.getName().equals("laptopA"));
 	    
 	    System.out.println(noneMatch);
+	    
+	    // Max
+    	System.out.println("-------------------Stream MAX----------------------");
+	    laptop.stream()
+	        .max(Comparator.comparing(Laptop::getPrice))
+	        .ifPresent(System.out::println);
+
+	    // Min
+	    laptop.stream()
+	        .min(Comparator.comparing(Laptop::getPrice))
+	        .ifPresent(System.out::println);
+
 	    }
+		
 	
 	 private static List<Laptop> getLaptop() {
 		    return List.of(
